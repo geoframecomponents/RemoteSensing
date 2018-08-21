@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -48,15 +60,15 @@ dependencies {
     compile group: 'javax.media', name: 'jai_imageio', version: '1.1'
     
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-grass
-    compile group: 'org.jgrasstools', name: 'jgt-grass', version: '0.7.8'
+    compile group: 'org.jgrasstools', name: 'jgt-grass', version: '0.7.7'
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-hortonmachine
-    compile group: 'org.jgrasstools', name: 'jgt-hortonmachine', version: '0 .7.8'
+    compile group: 'org.jgrasstools', name: 'jgt-hortonmachine', version: '0.7.7'
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-jgrassgears
-    compile group: 'org.jgrasstools', name: 'jgt-jgrassgears', version: '0.7.8'
+    compile group: 'org.jgrasstools', name: 'jgt-jgrassgears', version: '0.7.7'
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-modules
-    compile group: 'org.jgrasstools', name: 'jgt-modules', version: '0.7.8'
+    compile group: 'org.jgrasstools', name: 'jgt-modules', version: '0.7.7'
     // https://mvnrepository.com/artifact/org.jgrasstools/jgt-oms3
-    compile group: 'org.jgrasstools', name: 'jgt-oms3', version: '0.7.8'
+    compile group: 'org.jgrasstools', name: 'jgt-oms3', version: '0.7.7'
     compile group: 'net.sourceforge.hatbox', name: 'hatbox', version: '1.0.b7'
 	// https://mvnrepository.com/artifact/log4j/log4j
 	compile group: 'log4j', name: 'log4j', version: '1.2.17'
@@ -71,4 +83,10 @@ dependencies {
     testCompile group: 'org.geotools', name: 'gt-sample-data', version: '18.1'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 
+}
+
+shadowJar {
+    dependencies {
+        exclude(dependency('org.jgrasstools:jgt-jgrassgears:0.7.7'))
+    }
 }
