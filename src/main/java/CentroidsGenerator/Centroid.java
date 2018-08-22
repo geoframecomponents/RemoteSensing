@@ -3,8 +3,6 @@ package CentroidsGenerator;
 import oms3.annotations.Description;
 import oms3.annotations.Execute;
 import oms3.annotations.In;
-import oms3.annotations.Out;
-
 import java.awt.image.RenderedImage;
 import java.awt.image.WritableRaster;
 import java.io.File;
@@ -15,10 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-
 import static org.jgrasstools.gears.libs.modules.JGTConstants.doubleNovalue;
-
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.grid.GridGeometry2D;
 import org.geotools.data.DataUtilities;
@@ -102,7 +97,6 @@ public class Centroid {
 				return name.toLowerCase().endsWith(inputDataType);
 				}		    
 			});
-		//Object [] listOfDem=list(filesList);		
 		for(int iteratorRaster=0;iteratorRaster<filesList.length;iteratorRaster++){			 
 			String name =filesList[iteratorRaster].toString();
 			String[] pathToFile=name.split("/");
@@ -126,7 +120,6 @@ public class Centroid {
 			WritableRaster rasterMap=mapsTransform(mapGrid);					
 			GridGeometry2D mapGridGeo = mapGrid.getGridGeometry();
 			cellGrid = getCoordinate(mapGridGeo);
-			//CoordinateReferenceSystem sourceCRS = mapGrid.getCoordinateReferenceSystem2D();
 			rasterGrid=mapsTransform(mapGrid);
 			regionMap = CoverageUtilities.getRegionParamsFromGridCoverage(mapGrid);
 			int columns = regionMap.getCols();
@@ -140,7 +133,7 @@ public class Centroid {
 			for( int column = 0; column < columns; column++ ) {
 				for( int row = rows-1; row >=0; row-- ) {						
 					elevation 		= 	rasterMap.getSampleDouble(column, row, 0);
-					if (elevation == (defaultValue)) {value = doubleNovalue;}//defaultValue;}
+					if (elevation == (defaultValue)) {value = doubleNovalue;}
 					else {
 						Coordinate coordinate = (Coordinate) cellGrid.get(k);						
 						counterNonNullValue++;									
@@ -177,12 +170,10 @@ public class Centroid {
 			SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);			
 		
 			String ID = stationID;
-		//	double Elevation = meanElevation;			
 			Point point = geometryFactory.createPoint(new Coordinate(meanLongitude, meanLatitude));
 			featureBuilder.add(point);
 			featureBuilder.add(ID);
 			featureBuilder.add(meanElevation);
-			//featureBuilder.add("ciao");
 			SimpleFeature feature = featureBuilder.buildFeature(null);
 			features.add(feature);	
 			//String
