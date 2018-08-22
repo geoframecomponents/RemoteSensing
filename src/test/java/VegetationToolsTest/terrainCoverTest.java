@@ -24,7 +24,7 @@ public class terrainCoverTest {
 	
 		terrainCover coverage= new terrainCover();
 	
-		coverage.inFolder="/home/drugo/eclipse-workspace/CentroidsGenerator/resources/Input/LaiMap_cut";
+		coverage.inFolder="resources/Input/LaiMap_cut";
 		//centroids.referenceSystem = CRS.decode("EPSG:31256");
 		
 		OmsTimeSeriesIteratorWriter writerLai = new OmsTimeSeriesIteratorWriter();
