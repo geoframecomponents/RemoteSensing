@@ -1,4 +1,4 @@
-package CentroidsGenerator;
+package VegetationTools;
 import oms3.annotations.Description;
 import oms3.annotations.Execute;
 import oms3.annotations.In;

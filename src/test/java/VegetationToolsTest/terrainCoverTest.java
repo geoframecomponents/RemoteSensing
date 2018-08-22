@@ -1,11 +1,11 @@
-package CentroidsGeneratorTest;
+package VegetationToolsTest;
 
 import java.util.HashMap;
 
 import org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader;
 import org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter;
 import org.junit.Test;
-import CentroidsGenerator.terrainCover;
+import VegetationTools.terrainCover;
 
 
 public class terrainCoverTest {
